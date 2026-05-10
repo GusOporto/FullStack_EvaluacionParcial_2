@@ -46,10 +46,10 @@ public class ComunaController {
     }
 
     @PostMapping
-    public ResponseEntity<Comuna> agregar(@RequestBody Comuna comuna) {
+    public ResponseEntity<ComunaDTO> agregar(@RequestBody Comuna comuna) {
         try {
             Comuna guardada = comunaService.save(comuna);
-            return new ResponseEntity<>(guardada, HttpStatus.CREATED);
+            return new ResponseEntity<>(comunaService.findById(guardada.getId()), HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -66,9 +66,9 @@ public class ComunaController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Comuna> actualizar(@PathVariable Long id, @RequestBody Comuna comuna) {
+    public ResponseEntity<ComunaDTO> actualizar(@PathVariable Long id, @RequestBody Comuna comuna) {
         try {
-            Comuna newComuna = comunaService.updateComuna(id, comuna);
+            ComunaDTO newComuna = comunaService.updateComuna(id, comuna);
             return new ResponseEntity<>(newComuna, HttpStatus.OK);
         } catch (RuntimeException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

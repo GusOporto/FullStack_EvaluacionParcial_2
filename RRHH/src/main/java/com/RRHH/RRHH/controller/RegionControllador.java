@@ -46,10 +46,10 @@ public class RegionControllador {
     }
 
     @PostMapping
-    public ResponseEntity<Region> agregar(@RequestBody Region region) {
+    public ResponseEntity<RegionDTO> agregar(@RequestBody Region region) {
         try {
             Region guardado = regionService.save(region);
-            return new ResponseEntity<>(guardado, HttpStatus.CREATED);
+            return new ResponseEntity<>(regionService.findById(guardado.getId()), HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -66,9 +66,9 @@ public class RegionControllador {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Region> actualizar(@PathVariable Long id, @RequestBody Region region) {
+    public ResponseEntity<RegionDTO> actualizar(@PathVariable Long id, @RequestBody Region region) {
         try {
-            Region newRegion = regionService.updateRegion(id, region);
+            RegionDTO newRegion = regionService.updateRegion(id, region);
             return new ResponseEntity<>(newRegion, HttpStatus.OK);
         } catch (RuntimeException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

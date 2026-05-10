@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.RRHH.RRHH.DTO.RegionDTO;
+import com.RRHH.RRHH.model.Colaborador;
 import com.RRHH.RRHH.model.Comuna;
 import com.RRHH.RRHH.model.Region;
 import com.RRHH.RRHH.model.Sucursal;
@@ -48,13 +49,13 @@ public class RegionService {
         }
     }
 
-    public Region updateRegion(Long id, Region region1) {
+    public RegionDTO updateRegion(Long id, Region region1) {
         Region region2 = regionRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("La Region no existe."));
         if (region1.getNombre() != null) {
             region2.setNombre(region1.getNombre());
         }
-        return regionRepository.save(region2);
+        return convertirADTO(regionRepository.save(region2));
     }
 
     private RegionDTO convertirADTO(Region region) {
@@ -77,6 +78,14 @@ public class RegionService {
             }
         }
         dto.setSucursales(sucursales);
+
+        List<String> colaboradores = new ArrayList<>();
+        if (region.getColaboradores() != null) {
+            for (Colaborador c : region.getColaboradores()) {
+                colaboradores.add("ID: " + c.getId() + " - " + c.getNombres() + " " + c.getApellidos());
+            }
+        }
+        dto.setColaboradores(colaboradores);
         return dto;
     }
 }

@@ -2,15 +2,17 @@ package com.RRHH.RRHH.DTO;
 
 import java.util.List;
 
-import com.RRHH.RRHH.model.Region;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 import lombok.Data;
 
 @Data
+@JsonPropertyOrder({ "id", "nombre", "region", "sucursales", "colaboradores" })
 public class ComunaDTO {
     private Long id;
     private String nombre;
 
-    private Region region;
+    private String region;
     private List<String> sucursales;
     private List<String> colaboradores;
 

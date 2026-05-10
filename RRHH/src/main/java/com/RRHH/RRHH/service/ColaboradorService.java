@@ -119,11 +119,11 @@ public class ColaboradorService {
         dto.setSucursales(sucursales);
 
         if (colaborador.getRegion() != null) {
-            dto.setRegion(colaborador.getRegion());
+            dto.setRegion(colaborador.getRegion().getNombre());
         }
 
         if (colaborador.getComuna() != null) {
-            dto.setComuna(colaborador.getComuna());
+            dto.setComuna(colaborador.getComuna().getNombre());
         }
         return dto;
     }

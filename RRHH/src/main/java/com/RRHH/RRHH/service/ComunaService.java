@@ -48,13 +48,13 @@ public class ComunaService {
         }
     }
 
-    public Comuna updateComuna(Long id, Comuna comuna1) {
+    public ComunaDTO updateComuna(Long id, Comuna comuna1) {
         Comuna comuna2 = comunaRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("La Comuna no existe."));
         if (comuna1.getNombre() != null) {
             comuna2.setNombre(comuna1.getNombre());
         }
-        return comunaRepository.save(comuna2);
+        return convertirADTO(comunaRepository.save(comuna2));
     }
 
     private ComunaDTO convertirADTO(Comuna comuna) {
@@ -63,7 +63,7 @@ public class ComunaService {
         dto.setNombre(comuna.getNombre());
 
         if (comuna.getRegion() != null) {
-            dto.setRegion(comuna.getRegion());
+            dto.setRegion(comuna.getRegion().getNombre());
         }
 
         List<String> sucursales = new ArrayList<>();
@@ -77,7 +77,7 @@ public class ComunaService {
         List<String> colaboradores = new ArrayList<>();
         if (comuna.getColaboradores() != null) {
             for (Colaborador c : comuna.getColaboradores()) {
-                colaboradores.add(c.getNombres() + " " + c.getApellidos());
+                colaboradores.add("ID: " + c.getId() + " - " + c.getNombres() + " " + c.getApellidos());
             }
         }
         dto.setColaboradores(colaboradores);
