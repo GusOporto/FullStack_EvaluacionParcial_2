@@ -20,9 +20,11 @@ import com.RRHH.RRHH.model.Comuna;
 import com.RRHH.RRHH.service.ComunaService;
 
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("/api/v1/comunas")
+@Slf4j
 public class ComunaController {
 
     @Autowired

@@ -14,9 +14,11 @@ import com.RRHH.RRHH.model.Sucursal;
 import com.RRHH.RRHH.repository.RegionRepository;
 
 import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Transactional
+@Slf4j
 public class RegionService {
 
     @Autowired

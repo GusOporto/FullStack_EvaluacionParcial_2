@@ -20,9 +20,11 @@ import com.RRHH.RRHH.model.Colaborador;
 import com.RRHH.RRHH.service.ColaboradorService;
 
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("api/v1/colaboradores")
+@Slf4j
 public class ColaboradorController {
 
     @Autowired

@@ -20,9 +20,11 @@ import com.RRHH.RRHH.model.Sucursal;
 import com.RRHH.RRHH.service.SucursalService;
 
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("api/v1/sucursales")
+@Slf4j
 public class SucursalController {
 
     @Autowired
