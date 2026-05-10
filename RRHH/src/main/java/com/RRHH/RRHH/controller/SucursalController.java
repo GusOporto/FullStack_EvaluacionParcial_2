@@ -46,10 +46,10 @@ public class SucursalController {
     }
 
     @PostMapping
-    public ResponseEntity<Sucursal> agregar(@RequestBody Sucursal sucursal) {
+    public ResponseEntity<SucursalDTO> agregar(@RequestBody Sucursal sucursal) {
         try {
             Sucursal guardado = sucursalService.save(sucursal);
-            return new ResponseEntity<>(guardado, HttpStatus.CREATED);
+            return new ResponseEntity<>(sucursalService.findById(guardado.getId()), HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -66,9 +66,9 @@ public class SucursalController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Sucursal> actualizar(@PathVariable Long id, @RequestBody Sucursal sucursal) {
+    public ResponseEntity<SucursalDTO> actualizar(@PathVariable Long id, @RequestBody Sucursal sucursal) {
         try {
-            Sucursal newSucursal = sucursalService.updateSucursal(id, sucursal);
+            SucursalDTO newSucursal = sucursalService.updateSucursal(id, sucursal);
             return new ResponseEntity<>(newSucursal, HttpStatus.OK);
         } catch (RuntimeException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

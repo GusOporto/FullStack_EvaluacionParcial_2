@@ -48,13 +48,13 @@ public class SucursalService {
         }
     }
 
-    public Sucursal updateSucursal(Long id, Sucursal sucursal1) {
+    public SucursalDTO updateSucursal(Long id, Sucursal sucursal1) {
         Sucursal sucursal2 = sucursalRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("La Sucursal no existe."));
         if (sucursal1.getNombre() != null) {
             sucursal2.setNombre(sucursal1.getNombre());
         }
-        return sucursalRepository.save(sucursal2);
+        return convertirADTO(sucursalRepository.save(sucursal2));
     }
 
     private SucursalDTO convertirADTO(Sucursal sucursal) {
@@ -64,17 +64,17 @@ public class SucursalService {
         dto.setDireccion(sucursal.getDireccion());
 
         if (sucursal.getRegion() != null) {
-            dto.setRegion(sucursal.getRegion());
+            dto.setRegion(sucursal.getRegion().getNombre());
         }
 
         if (sucursal.getComuna() != null) {
-            dto.setComuna(sucursal.getComuna());
+            dto.setComuna(sucursal.getComuna().getNombre());
         }
 
         List<String> colaboradores = new ArrayList<>();
         if (sucursal.getColaboradores() != null) {
             for (Colaborador c : sucursal.getColaboradores()) {
-                colaboradores.add(c.getNombres() + " " + c.getApellidos());
+                colaboradores.add("ID: " + c.getId() + " - " + c.getNombres() + " " + c.getApellidos());
             }
         }
         dto.setColaboradores(colaboradores);
