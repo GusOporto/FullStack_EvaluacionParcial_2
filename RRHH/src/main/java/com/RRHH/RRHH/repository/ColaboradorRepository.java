@@ -12,7 +12,8 @@ import com.RRHH.RRHH.model.Colaborador;
 @Repository
 public interface ColaboradorRepository extends JpaRepository<Colaborador, Long> {
 
-    List<Colaborador> findBySucursales(Long id);
+    @Query("SELECT c FROM Colaborador c JOIN c.sucursales s WHERE s.id = :sucursalId")
+    List<Colaborador> findBySucursales(@Param("sucursalId") Long sucursalId);
 
     @Query("SELECT c FROM Colaborador c WHERE c.region.id = :regionId")
     List<Colaborador> findByRegion(@Param("regionId") Long regionId);

@@ -33,8 +33,9 @@ public class ComunaService {
         return convertirADTO(comuna);
     }
 
-    public Comuna save(Comuna comuna) {
-        return comunaRepository.save(comuna);
+    public ComunaDTO save(Comuna comuna) {
+        Comuna guardado = comunaRepository.save(comuna);
+        return convertirADTO(guardado);
     }
 
     public String delete(Long id) {
@@ -54,7 +55,8 @@ public class ComunaService {
         if (comuna1.getNombre() != null) {
             comuna2.setNombre(comuna1.getNombre());
         }
-        return convertirADTO(comunaRepository.save(comuna2));
+        Comuna actualizado = comunaRepository.save(comuna2);
+        return convertirADTO(actualizado);
     }
 
     private ComunaDTO convertirADTO(Comuna comuna) {
@@ -63,13 +65,13 @@ public class ComunaService {
         dto.setNombre(comuna.getNombre());
 
         if (comuna.getRegion() != null) {
-            dto.setRegion(comuna.getRegion().getNombre());
+            dto.setRegion("ID: " + comuna.getRegion().getId() + " - " + comuna.getRegion().getNombre());
         }
 
         List<String> sucursales = new ArrayList<>();
         if (comuna.getSucursales() != null) {
             for (Sucursal s : comuna.getSucursales()) {
-                sucursales.add(s.getNombre());
+                sucursales.add("ID: " + s.getId() + " - " + s.getNombre());
             }
         }
         dto.setSucursales(sucursales);

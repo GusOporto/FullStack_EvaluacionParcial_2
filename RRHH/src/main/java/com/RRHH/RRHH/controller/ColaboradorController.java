@@ -82,30 +82,31 @@ public class ColaboradorController {
     }
 
     @PostMapping
-    public ResponseEntity<Colaborador> agregar(@RequestBody Colaborador colab) {
+    public ResponseEntity<ColaboradorDTO> agregar(@RequestBody Colaborador colab) {
         try {
-            Colaborador guardado = colaboradorService.save(colab);
-            return new ResponseEntity<>(guardado, HttpStatus.CREATED);
+            ColaboradorDTO guardadoDTO = colaboradorService.save(colab);
+            return new ResponseEntity<>(guardadoDTO, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Colaborador> editarColaborador(@PathVariable Long id, @RequestBody Colaborador colab) {
+    public ResponseEntity<ColaboradorDTO> editarColaborador(@PathVariable Long id, @RequestBody Colaborador colab) {
         try {
-            Colaborador editado = colaboradorService.save(colab);
-            return new ResponseEntity<>(editado, HttpStatus.OK);
+            colab.setId(id);
+            ColaboradorDTO editadoDTO = colaboradorService.save(colab);
+            return new ResponseEntity<>(editadoDTO, HttpStatus.OK);
         } catch (RuntimeException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Colaborador> actualizar(@PathVariable Long id, @RequestBody Colaborador colab) {
+    public ResponseEntity<ColaboradorDTO> actualizar(@PathVariable Long id, @RequestBody Colaborador colab) {
         try {
-            Colaborador newColab = colaboradorService.updateColaborador(id, colab);
-            return new ResponseEntity<>(newColab, HttpStatus.OK);
+            ColaboradorDTO actualizadoDTO = colaboradorService.updateColaborador(id, colab);
+            return new ResponseEntity<>(actualizadoDTO, HttpStatus.OK);
         } catch (RuntimeException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

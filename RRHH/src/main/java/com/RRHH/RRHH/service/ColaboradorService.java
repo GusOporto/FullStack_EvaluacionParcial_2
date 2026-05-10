@@ -32,8 +32,9 @@ public class ColaboradorService {
         return convertirADTO(colaborador);
     }
 
-    public Colaborador save(Colaborador colaborador) {
-        return colaboradorRepository.save(colaborador);
+    public ColaboradorDTO save(Colaborador colaborador) {
+        Colaborador guardado = colaboradorRepository.save(colaborador);
+        return convertirADTO(guardado);
     }
 
     public String delete(Long id) {
@@ -48,7 +49,7 @@ public class ColaboradorService {
         }
     }
 
-    public Colaborador updateColaborador(Long id, Colaborador col1) {
+    public ColaboradorDTO updateColaborador(Long id, Colaborador col1) {
         Colaborador col2 = colaboradorRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("El Colaborador no existe."));
         if (col1.getRun() != null) {
@@ -72,7 +73,8 @@ public class ColaboradorService {
         if (col1.getDireccion() != null) {
             col2.setDireccion(col1.getDireccion());
         }
-        return colaboradorRepository.save(col2);
+        Colaborador actualizado = colaboradorRepository.save(col2);
+        return convertirADTO(actualizado);
     }
 
     public List<ColaboradorDTO> findByRun(String run) {
@@ -113,17 +115,17 @@ public class ColaboradorService {
         List<String> sucursales = new ArrayList<>();
         if (colaborador.getSucursales() != null) {
             for (Sucursal s : colaborador.getSucursales()) {
-                sucursales.add(s.getNombre());
+                sucursales.add("ID: " + s.getId() + " - " + s.getNombre());
             }
         }
         dto.setSucursales(sucursales);
 
         if (colaborador.getRegion() != null) {
-            dto.setRegion(colaborador.getRegion().getNombre());
+            dto.setRegion("ID: " + colaborador.getRegion().getId() + " - " + colaborador.getRegion().getNombre());
         }
 
         if (colaborador.getComuna() != null) {
-            dto.setComuna(colaborador.getComuna().getNombre());
+            dto.setComuna("ID: " + colaborador.getComuna().getId() + " - " + colaborador.getComuna().getNombre());
         }
         return dto;
     }

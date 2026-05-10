@@ -32,8 +32,9 @@ public class SucursalService {
         return convertirADTO(sucursal);
     }
 
-    public Sucursal save(Sucursal sucursal) {
-        return sucursalRepository.save(sucursal);
+    public SucursalDTO save(Sucursal sucursal) {
+        Sucursal guardado = sucursalRepository.save(sucursal);
+        return convertirADTO(guardado);
     }
 
     public String delete(Long id) {
@@ -54,7 +55,8 @@ public class SucursalService {
         if (sucursal1.getNombre() != null) {
             sucursal2.setNombre(sucursal1.getNombre());
         }
-        return convertirADTO(sucursalRepository.save(sucursal2));
+        Sucursal guardado = sucursalRepository.save(sucursal2);
+        return convertirADTO(guardado);
     }
 
     private SucursalDTO convertirADTO(Sucursal sucursal) {
@@ -64,11 +66,11 @@ public class SucursalService {
         dto.setDireccion(sucursal.getDireccion());
 
         if (sucursal.getRegion() != null) {
-            dto.setRegion(sucursal.getRegion().getNombre());
+            dto.setRegion("ID: " + sucursal.getRegion().getId() + " - " + sucursal.getRegion().getNombre());
         }
 
         if (sucursal.getComuna() != null) {
-            dto.setComuna(sucursal.getComuna().getNombre());
+            dto.setComuna("ID: " + sucursal.getComuna().getId() + " - " + sucursal.getComuna().getNombre());
         }
 
         List<String> colaboradores = new ArrayList<>();
@@ -80,5 +82,4 @@ public class SucursalService {
         dto.setColaboradores(colaboradores);
         return dto;
     }
-
 }

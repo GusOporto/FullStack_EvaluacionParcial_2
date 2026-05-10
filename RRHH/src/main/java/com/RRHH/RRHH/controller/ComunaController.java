@@ -48,18 +48,19 @@ public class ComunaController {
     @PostMapping
     public ResponseEntity<ComunaDTO> agregar(@RequestBody Comuna comuna) {
         try {
-            Comuna guardada = comunaService.save(comuna);
-            return new ResponseEntity<>(comunaService.findById(guardada.getId()), HttpStatus.CREATED);
+            ComunaDTO guardadaDTO = comunaService.save(comuna);
+            return new ResponseEntity<>(comunaService.findById(guardadaDTO.getId()), HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Comuna> editarComuna(@PathVariable Long id, @RequestBody Comuna comuna) {
+    public ResponseEntity<ComunaDTO> editarComuna(@PathVariable Long id, @RequestBody Comuna comuna) {
         try {
-            Comuna editada = comunaService.save(comuna);
-            return new ResponseEntity<>(editada, HttpStatus.OK);
+            comuna.setId(id);
+            ComunaDTO editadoDTO = comunaService.save(comuna);
+            return new ResponseEntity<>(editadoDTO, HttpStatus.OK);
         } catch (RuntimeException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -68,8 +69,8 @@ public class ComunaController {
     @PutMapping("/{id}")
     public ResponseEntity<ComunaDTO> actualizar(@PathVariable Long id, @RequestBody Comuna comuna) {
         try {
-            ComunaDTO newComuna = comunaService.updateComuna(id, comuna);
-            return new ResponseEntity<>(newComuna, HttpStatus.OK);
+            ComunaDTO actualizadoDTO = comunaService.updateComuna(id, comuna);
+            return new ResponseEntity<>(actualizadoDTO, HttpStatus.OK);
         } catch (RuntimeException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
