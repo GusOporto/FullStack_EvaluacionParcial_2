@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import lombok.Data;
 
 @Data
-@JsonFormat(pattern = "dd-MM-yyyy")
+@JsonFormat(pattern = "yyyy-MM-dd")
 @JsonPropertyOrder({ "id", "run", "nombres", "apellidos", "fechaNacimiento", "telefono", "correo", "direccion",
         "region", "comuna", "sucursales" })
 public class ColaboradorDTO {
