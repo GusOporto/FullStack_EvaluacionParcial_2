@@ -34,8 +34,9 @@ public class RegionService {
         return convertirADTO(region);
     }
 
-    public Region save(Region region) {
-        return regionRepository.save(region);
+    public RegionDTO save(Region region) {
+        Region guardado = regionRepository.save(region);
+        return convertirADTO(guardado);
     }
 
     public String delete(Long id) {
@@ -55,7 +56,8 @@ public class RegionService {
         if (region1.getNombre() != null) {
             region2.setNombre(region1.getNombre());
         }
-        return convertirADTO(regionRepository.save(region2));
+        Region actualizado = regionRepository.save(region2);
+        return convertirADTO(actualizado);
     }
 
     private RegionDTO convertirADTO(Region region) {
@@ -66,7 +68,7 @@ public class RegionService {
         List<String> comunas = new ArrayList<>();
         if (region.getComunas() != null) {
             for (Comuna c : region.getComunas()) {
-                comunas.add(c.getNombre());
+                comunas.add("ID: " + c.getId() + " - " + c.getNombre());
             }
         }
         dto.setComunas(comunas);
@@ -74,7 +76,7 @@ public class RegionService {
         List<String> sucursales = new ArrayList<>();
         if (region.getSucursales() != null) {
             for (Sucursal s : region.getSucursales()) {
-                sucursales.add(s.getNombre());
+                sucursales.add("ID: " + s.getId() + " - " + s.getNombre());
             }
         }
         dto.setSucursales(sucursales);

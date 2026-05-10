@@ -48,18 +48,19 @@ public class RegionControllador {
     @PostMapping
     public ResponseEntity<RegionDTO> agregar(@RequestBody Region region) {
         try {
-            Region guardado = regionService.save(region);
-            return new ResponseEntity<>(regionService.findById(guardado.getId()), HttpStatus.CREATED);
+            RegionDTO guardadoDTO = regionService.save(region);
+            return new ResponseEntity<>(regionService.findById(guardadoDTO.getId()), HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Region> editarRegion(@PathVariable Long id, @RequestBody Region region) {
+    public ResponseEntity<RegionDTO> editarRegion(@PathVariable Long id, @RequestBody Region region) {
         try {
-            Region editado = regionService.save(region);
-            return new ResponseEntity<>(editado, HttpStatus.OK);
+            region.setId(id);
+            RegionDTO editadoDTO = regionService.save(region);
+            return new ResponseEntity<>(editadoDTO, HttpStatus.OK);
         } catch (RuntimeException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -68,8 +69,8 @@ public class RegionControllador {
     @PutMapping("/{id}")
     public ResponseEntity<RegionDTO> actualizar(@PathVariable Long id, @RequestBody Region region) {
         try {
-            RegionDTO newRegion = regionService.updateRegion(id, region);
-            return new ResponseEntity<>(newRegion, HttpStatus.OK);
+            RegionDTO actualizadoDTO = regionService.updateRegion(id, region);
+            return new ResponseEntity<>(actualizadoDTO, HttpStatus.OK);
         } catch (RuntimeException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
