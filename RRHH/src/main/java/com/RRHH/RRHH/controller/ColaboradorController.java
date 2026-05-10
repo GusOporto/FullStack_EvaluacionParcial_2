@@ -19,6 +19,8 @@ import com.RRHH.RRHH.DTO.ColaboradorDTO;
 import com.RRHH.RRHH.model.Colaborador;
 import com.RRHH.RRHH.service.ColaboradorService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("api/v1/colaboradores")
 public class ColaboradorController {
@@ -82,7 +84,7 @@ public class ColaboradorController {
     }
 
     @PostMapping
-    public ResponseEntity<ColaboradorDTO> agregar(@RequestBody Colaborador colab) {
+    public ResponseEntity<ColaboradorDTO> agregar(@Valid @RequestBody Colaborador colab) {
         try {
             ColaboradorDTO guardadoDTO = colaboradorService.save(colab);
             return new ResponseEntity<>(guardadoDTO, HttpStatus.CREATED);
@@ -92,7 +94,8 @@ public class ColaboradorController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<ColaboradorDTO> editarColaborador(@PathVariable Long id, @RequestBody Colaborador colab) {
+    public ResponseEntity<ColaboradorDTO> editarColaborador(@Valid @PathVariable Long id,
+            @RequestBody Colaborador colab) {
         try {
             colab.setId(id);
             ColaboradorDTO editadoDTO = colaboradorService.save(colab);
@@ -103,7 +106,7 @@ public class ColaboradorController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ColaboradorDTO> actualizar(@PathVariable Long id, @RequestBody Colaborador colab) {
+    public ResponseEntity<ColaboradorDTO> actualizar(@Valid @PathVariable Long id, @RequestBody Colaborador colab) {
         try {
             ColaboradorDTO actualizadoDTO = colaboradorService.updateColaborador(id, colab);
             return new ResponseEntity<>(actualizadoDTO, HttpStatus.OK);

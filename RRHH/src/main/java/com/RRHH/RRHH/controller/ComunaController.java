@@ -19,6 +19,8 @@ import com.RRHH.RRHH.DTO.ComunaDTO;
 import com.RRHH.RRHH.model.Comuna;
 import com.RRHH.RRHH.service.ComunaService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/v1/comunas")
 public class ComunaController {
@@ -46,7 +48,7 @@ public class ComunaController {
     }
 
     @PostMapping
-    public ResponseEntity<ComunaDTO> agregar(@RequestBody Comuna comuna) {
+    public ResponseEntity<ComunaDTO> agregar(@Valid @RequestBody Comuna comuna) {
         try {
             ComunaDTO guardadaDTO = comunaService.save(comuna);
             return new ResponseEntity<>(comunaService.findById(guardadaDTO.getId()), HttpStatus.CREATED);
@@ -56,7 +58,7 @@ public class ComunaController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<ComunaDTO> editarComuna(@PathVariable Long id, @RequestBody Comuna comuna) {
+    public ResponseEntity<ComunaDTO> editarComuna(@Valid @PathVariable Long id, @RequestBody Comuna comuna) {
         try {
             comuna.setId(id);
             ComunaDTO editadoDTO = comunaService.save(comuna);
@@ -67,7 +69,7 @@ public class ComunaController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ComunaDTO> actualizar(@PathVariable Long id, @RequestBody Comuna comuna) {
+    public ResponseEntity<ComunaDTO> actualizar(@Valid @PathVariable Long id, @RequestBody Comuna comuna) {
         try {
             ComunaDTO actualizadoDTO = comunaService.updateComuna(id, comuna);
             return new ResponseEntity<>(actualizadoDTO, HttpStatus.OK);

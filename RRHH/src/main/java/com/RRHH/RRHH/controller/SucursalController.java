@@ -19,6 +19,8 @@ import com.RRHH.RRHH.DTO.SucursalDTO;
 import com.RRHH.RRHH.model.Sucursal;
 import com.RRHH.RRHH.service.SucursalService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("api/v1/sucursales")
 public class SucursalController {
@@ -46,7 +48,7 @@ public class SucursalController {
     }
 
     @PostMapping
-    public ResponseEntity<SucursalDTO> agregar(@RequestBody Sucursal sucursal) {
+    public ResponseEntity<SucursalDTO> agregar(@Valid @RequestBody Sucursal sucursal) {
         try {
             SucursalDTO guardadoDTO = sucursalService.save(sucursal);
             return new ResponseEntity<>(guardadoDTO, HttpStatus.CREATED);
@@ -56,7 +58,7 @@ public class SucursalController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<SucursalDTO> editarSucursal(@PathVariable Long id, @RequestBody Sucursal sucursal) {
+    public ResponseEntity<SucursalDTO> editarSucursal(@Valid @PathVariable Long id, @RequestBody Sucursal sucursal) {
         try {
             SucursalDTO editadoDTO = sucursalService.save(sucursal);
             return new ResponseEntity<>(editadoDTO, HttpStatus.OK);
@@ -66,7 +68,7 @@ public class SucursalController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<SucursalDTO> actualizar(@PathVariable Long id, @RequestBody Sucursal sucursal) {
+    public ResponseEntity<SucursalDTO> actualizar(@Valid @PathVariable Long id, @RequestBody Sucursal sucursal) {
         try {
             SucursalDTO actualizadoDTO = sucursalService.updateSucursal(id, sucursal);
             return new ResponseEntity<>(actualizadoDTO, HttpStatus.OK);

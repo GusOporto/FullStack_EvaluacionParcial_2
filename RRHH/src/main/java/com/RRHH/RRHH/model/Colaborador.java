@@ -68,7 +68,6 @@ public class Colaborador {
         private String direccion;
 
         // Relaciones
-
         @ManyToMany
         @JoinTable(name = "colaborador_sucursal", joinColumns = @JoinColumn(name = "colaborador_id"), inverseJoinColumns = @JoinColumn(name = "sucursal_id"), uniqueConstraints = @UniqueConstraint(columnNames = {
                         "colaborador_id", "sucursal_id" }))

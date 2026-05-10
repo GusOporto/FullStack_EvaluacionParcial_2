@@ -11,7 +11,7 @@ import lombok.Data;
 public class ComunaDTO {
     private Long id;
     private String nombre;
-
+    // Relaciones
     private String region;
     private List<String> sucursales;
     private List<String> colaboradores;

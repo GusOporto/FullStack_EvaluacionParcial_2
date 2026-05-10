@@ -12,7 +12,7 @@ public class SucursalDTO {
     private Long id;
     private String nombre;
     private String direccion;
-
+    // Relaciones
     private String region;
     private String comuna;
     private List<String> colaboradores;

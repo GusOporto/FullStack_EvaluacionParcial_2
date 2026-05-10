@@ -19,6 +19,8 @@ import com.RRHH.RRHH.DTO.RegionDTO;
 import com.RRHH.RRHH.model.Region;
 import com.RRHH.RRHH.service.RegionService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("api/v1/regiones")
 public class RegionControllador {
@@ -46,7 +48,7 @@ public class RegionControllador {
     }
 
     @PostMapping
-    public ResponseEntity<RegionDTO> agregar(@RequestBody Region region) {
+    public ResponseEntity<RegionDTO> agregar(@Valid @RequestBody Region region) {
         try {
             RegionDTO guardadoDTO = regionService.save(region);
             return new ResponseEntity<>(regionService.findById(guardadoDTO.getId()), HttpStatus.CREATED);
@@ -56,7 +58,7 @@ public class RegionControllador {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<RegionDTO> editarRegion(@PathVariable Long id, @RequestBody Region region) {
+    public ResponseEntity<RegionDTO> editarRegion(@Valid @PathVariable Long id, @RequestBody Region region) {
         try {
             region.setId(id);
             RegionDTO editadoDTO = regionService.save(region);
@@ -67,7 +69,7 @@ public class RegionControllador {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<RegionDTO> actualizar(@PathVariable Long id, @RequestBody Region region) {
+    public ResponseEntity<RegionDTO> actualizar(@Valid @PathVariable Long id, @RequestBody Region region) {
         try {
             RegionDTO actualizadoDTO = regionService.updateRegion(id, region);
             return new ResponseEntity<>(actualizadoDTO, HttpStatus.OK);

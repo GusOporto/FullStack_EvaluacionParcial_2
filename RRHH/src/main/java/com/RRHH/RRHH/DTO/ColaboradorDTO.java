@@ -22,7 +22,7 @@ public class ColaboradorDTO {
     private String telefono;
     private String correo;
     private String direccion;
-
+    // Relaciones
     private List<String> sucursales;
     private String region;
     private String comuna;
