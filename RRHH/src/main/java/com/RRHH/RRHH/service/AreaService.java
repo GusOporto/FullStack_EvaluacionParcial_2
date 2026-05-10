@@ -1,36 +1,74 @@
 package com.RRHH.RRHH.service;
 
+import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.RRHH.RRHH.DTO.AreaDTO;
 import com.RRHH.RRHH.model.Area;
 import com.RRHH.RRHH.repository.AreaRepository;
-
-
+import jakarta.transaction.Transactional;
 
 @Service
+@Transactional
 public class AreaService {
     
     @Autowired
     private AreaRepository areaRepository;
 
-    public List<Area> obtenerAreas(){
-        return areaRepository.findAll();
+    public List<AreaDTO> obtenerAreas(){
+        return areaRepository.findAll().stream().map(this::convertirADTO).toList();
+
     }
 
-    public Area guardarArea(Area area){
-        return areaRepository.save(area);
+    public AreaDTO buscarPorId(Long id) {
+        Area area = areaRepository.findById(id).orElseThrow(() -> new RuntimeException("¡Área no encontrada!"));
+        return convertirADTO(area);
+    }
+    
+    public String eliminar(Long id) {
+        try {
+            Area area = areaRepository.findById(id).orElseThrow(() -> new RuntimeException("¡Imposible eliminar! El área con ID " + id + " no existe."));
+            areaRepository.delete(area);
+            return "El área '" + area.getNombre() + "' ha sido eliminada exitosamente.";
+        } catch (RuntimeException e) {
+            return e.getMessage();
+        }
     }
 
-    public Area obtenerAreaPorId(Long id){
-        return areaRepository.findById(id).orElse(null);    
+    public AreaDTO guardarArea(Area area){
+        Area guardada = areaRepository.save(area);
+        return convertirADTO(guardada);
     }
 
-    public void eliminarArea(Long id) {
-        areaRepository.deleteById(id);
+    public AreaDTO actualizarArea(Long id, Area area) {
+        Area areaExistente = areaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("¡El área no existe en los registros!"));
+        if (area.getNombre() != null) {
+            areaExistente.setNombre(area.getNombre());
+        }
+        if (area.getDescripcion() != null) {
+            areaExistente.setDescripcion(area.getDescripcion());
+        }
+        Area actualizada = areaRepository.save(areaExistente);
+        return convertirADTO(actualizada);
     }
 
+    
+    private AreaDTO convertirADTO(Area area) {
+        AreaDTO dto = new AreaDTO();
+        dto.setId(area.getId());
+        dto.setNombre(area.getNombre());
+        dto.setDescripcion(area.getDescripcion());
+        return dto;
+    }
 
 }
+
+
+   
+    
+
+
+
