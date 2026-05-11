@@ -10,9 +10,11 @@ import com.RRHH.RRHH.model.Curriculum;
 import com.RRHH.RRHH.repository.CurriculumRepository;
 
 import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Transactional
+@Slf4j
 //CLASE DE CURRICULUM EN RRHH
 public class CurriculumService {
 

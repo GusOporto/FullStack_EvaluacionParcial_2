@@ -10,9 +10,11 @@ import com.RRHH.RRHH.model.Evaluaciones;
 import com.RRHH.RRHH.repository.EvaluacionesRepository;
 
 import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Transactional
+@Slf4j
 //CLASE DE EVALUACIONES EN RRHH
 public class EvaluacionesService {
 

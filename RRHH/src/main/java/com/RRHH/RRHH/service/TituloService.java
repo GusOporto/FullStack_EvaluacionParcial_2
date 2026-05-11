@@ -10,9 +10,11 @@ import com.RRHH.RRHH.model.Titulo;
 import com.RRHH.RRHH.repository.TituloRepository;
 
 import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Transactional
+@Slf4j
 //CLASE DE TITULO EN RRHH
 public class TituloService {
 

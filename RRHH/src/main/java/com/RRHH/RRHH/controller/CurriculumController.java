@@ -17,6 +17,7 @@ import com.RRHH.RRHH.model.Curriculum;
 import com.RRHH.RRHH.service.CurriculumService;
 
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("api/v1/curriculum")// http://localhost:8080/api/v1/curriculum
+@Slf4j
 public class CurriculumController {
 
     @Autowired//obligatorio para heredar curriculum service

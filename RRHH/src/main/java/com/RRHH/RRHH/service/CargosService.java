@@ -9,9 +9,11 @@ import com.RRHH.RRHH.DTO.CargosDTO;
 import com.RRHH.RRHH.model.Cargos;
 import com.RRHH.RRHH.repository.CargosRepository;
 import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Transactional
+@Slf4j
 //CLASE DE CARGOS EN RRHH
 public class CargosService {
 

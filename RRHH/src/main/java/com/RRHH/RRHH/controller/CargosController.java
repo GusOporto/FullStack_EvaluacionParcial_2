@@ -20,9 +20,11 @@ import com.RRHH.RRHH.model.Cargos;
 import com.RRHH.RRHH.service.CargosService;
 
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("api/v1/cargos")// http://localhost:8080/api/v1/cargos
+@Slf4j
 public class CargosController {
 
     @Autowired//obligatorio para heredar cargos service

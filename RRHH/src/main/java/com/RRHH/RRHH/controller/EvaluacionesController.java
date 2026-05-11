@@ -20,9 +20,11 @@ import com.RRHH.RRHH.model.Evaluaciones;
 import com.RRHH.RRHH.service.EvaluacionesService;
 
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("api/v1/evaluaciones")// http://localhost:8080/api/v1/evaluaciones
+@Slf4j
 public class EvaluacionesController {
 
     @Autowired//obligatorio para heredar evaluaciones service

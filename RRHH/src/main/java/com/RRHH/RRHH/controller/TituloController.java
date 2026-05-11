@@ -20,9 +20,11 @@ import com.RRHH.RRHH.model.Titulo;
 import com.RRHH.RRHH.service.TituloService;
 
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("api/v1/titulo")// http://localhost:8080/api/v1/titulo
+@Slf4j
 public class TituloController {
 
     @Autowired//obligatorio para heredar titulo service
