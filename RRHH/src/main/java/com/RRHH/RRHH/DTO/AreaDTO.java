@@ -1,7 +1,5 @@
 package com.RRHH.RRHH.DTO;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import lombok.Data;
