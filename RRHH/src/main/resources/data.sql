@@ -49,10 +49,10 @@ VALUES ('Ingeniero en Informatica', 'Duoc UC sede maipu', '2022-12-25');
 INSERT IGNORE INTO titulo (nombre, institucion, fecha_obtencion)
 VALUES ('Ingeniero en Informatica', 'Duoc UC sede Inglaterra', '2024-11-15');
 
--- Insertar Evaluaciones (Ojo con el nombre de la tabla si tiene el error 'evlauaciones')
-INSERT IGNORE INTO evlauaciones (fecha_evaluacion, periodo, observaciones, fortalezas, debilidades, por_mejorar)
+-- Insertar Evaluaciones
+INSERT IGNORE INTO evaluaciones (fecha_evaluacion, periodo, observaciones, fortalezas, debilidades, por_mejorar)
 VALUES ('2022-08-32', 'Primer Semestre 2026', 'increible desempeño', 'Puntualidad', 'Comunicacion', 'Liderazgo');
-INSERT IGNORE INTO evlauaciones (fecha_evaluacion, periodo, observaciones, fortalezas, debilidades, por_mejorar)
+INSERT IGNORE INTO evaluaciones (fecha_evaluacion, periodo, observaciones, fortalezas, debilidades, por_mejorar)
 VALUES ('2024-01-11', 'Primer Semestre 2025', 'buen desempeño', 'personalidad', 'ninguna', 'Liderazgo');
-INSERT IGNORE INTO evlauaciones (fecha_evaluacion, periodo, observaciones, fortalezas, debilidades, por_mejorar)
+INSERT IGNORE INTO evaluaciones (fecha_evaluacion, periodo, observaciones, fortalezas, debilidades, por_mejorar)
 VALUES ('2026-05-10', 'Primer Semestre 2023', 'Excelente desempeño', 'Puntualidad', 'Comunicacion', 'Liderazgo');
