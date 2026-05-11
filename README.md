@@ -20,8 +20,8 @@ Este proyecto forma parte de una arquitectura distribuida orientada a la gestió
 * Desarrollo de las clases Cargo, Curriculum, Evaluaciones y Titullo, implemento creación y inserción de sql. 
 
 **Krishna Benimelis:**
-
-* Desarrollo de clases Area…
+- Desarrollo de las clases Area, TipoContrato.
+- Implementación de lógica CRUD y validaciones.
 
 ## Funcionalidades Implementadas
 
