@@ -31,12 +31,7 @@ public class Curriculum {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    /*
-     * @OneToOne
-     * 
-     * @JoinColumn(name= "curriculum_id", nullable = true)
-     * private Colaborador Colaborador;
-     */
+ 
     @Size(min = 2, max = 75, message = "El nombre debe tener entre 2 y 75 caracteres")
     @Column(nullable = false, length = 75)
     @NotBlank(message = "El nombre es obligatorio")

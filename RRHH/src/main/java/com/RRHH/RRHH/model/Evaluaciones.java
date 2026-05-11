@@ -29,14 +29,7 @@ public class Evaluaciones {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    /*
-     * - evaluadorId (quién evaluó)
-     * 
-     * @ManyToOne
-     * 
-     * @JoinColumn(name= "Colaborador_id")
-     * private Colaborador Colaborador; //Persona Evaluada
-     */
+
     @Column(nullable = false)
     @JsonFormat(pattern = "dd.MM.yyyy")
     private LocalDate fechaEvaluacion;
