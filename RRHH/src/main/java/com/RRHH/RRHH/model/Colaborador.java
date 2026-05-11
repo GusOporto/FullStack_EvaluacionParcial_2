@@ -81,10 +81,7 @@ public class Colaborador {
         @JoinColumn(name = "comuna_id", nullable = false)
         private Comuna comuna;
 
-        /*
-         * @OneToMany
-         * 
-         * @JoinColumn(name = "evaluacion_id", nullable = true)
-         * private Evaluaciones evaluaciones;
-         */
+        @ManyToOne
+        @JoinColumn(name = "cargos_id", nullable = false)
+        private Cargos cargos;
 }
