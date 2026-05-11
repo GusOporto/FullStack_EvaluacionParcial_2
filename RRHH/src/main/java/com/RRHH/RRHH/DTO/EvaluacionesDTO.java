@@ -7,7 +7,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Data;
 
 @Data
-@JsonPropertyOrder({ "id", "fechaEvaluacion", "periodo", "observaciones", "fortalezas", "debilidades", "porMejorar" })
+@JsonPropertyOrder({ "id", "fechaEvaluacion", "periodo",  "fortalezas",
+                     "debilidades", "porMejorar", "observaciones", })
 public class EvaluacionesDTO {
 
     private Long id;
