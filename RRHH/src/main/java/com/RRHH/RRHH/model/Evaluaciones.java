@@ -60,7 +60,7 @@ public class Evaluaciones {
     // Relaciones
 
     @ManyToOne
-    @JoinColumn(name = "colaborador_id")
+    @JoinColumn(name = "colaborador_id", nullable = false)
     private Colaborador colaborador;
 
 }

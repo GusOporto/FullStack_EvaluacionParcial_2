@@ -29,7 +29,7 @@ INSERT IGNORE INTO colaborador_sucursal (colaborador_id, sucursal_id) VALUES (3,
 INSERT IGNORE INTO cargos (id, nombre, descripcion, sueldo)
 VALUES (3,'Cajero', 'Se encarga de escnear productos', 525000);
 INSERT IGNORE INTO cargos (id,nombre, descripcion, sueldo)
-VALUES (2'Limpia pisos', 'Se encarga de la limpieza del local', 425000);
+VALUES (2,'Limpia pisos', 'Se encarga de la limpieza del local', 425000);
 INSERT IGNORE INTO cargos (id,nombre, descripcion, sueldo)
 VALUES (1,'Administrador de Tienda', 'Se encarga de administrar la tienda', 725000);
 
@@ -45,7 +45,7 @@ VALUES (1,'Krishna ', 22, '2 años con Java ', 'Certificado Java', 'Java, SQL, G
 INSERT IGNORE INTO titulo (id,nombre, institucion, fecha_obtencion)
 VALUES (3,'Ingeniero en Informatica', 'Duoc UC sede plaza oeste', '2023-02-17');
 INSERT IGNORE INTO titulo (id,nombre, institucion, fecha_obtencion)
-VALUES (2.'Ingeniero en Informatica', 'Duoc UC sede maipu', '2022-12-25');
+VALUES (2,'Ingeniero en Informatica', 'Duoc UC sede maipu', '2022-12-25');
 INSERT IGNORE INTO titulo (id,nombre, institucion, fecha_obtencion)
 VALUES (1,'Ingeniero en Informatica', 'Duoc UC sede Inglaterra', '2024-11-15');
 
