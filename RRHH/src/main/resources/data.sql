@@ -51,7 +51,7 @@ VALUES (1,'Ingeniero en Informatica', 'Duoc UC sede Inglaterra', '2024-11-15');
 
 -- Insertar Evaluaciones
 INSERT IGNORE INTO evaluaciones (id,fecha_evaluacion, periodo, observaciones, fortalezas, debilidades, por_mejorar)
-VALUES (1,'2022-08-32', 'Primer Semestre 2026', 'increible desempeño', 'Puntualidad', 'Comunicacion', 'Liderazgo');
+VALUES (1,'2022-08-12', 'Primer Semestre 2026', 'increible desempeño', 'Puntualidad', 'Comunicacion', 'Liderazgo');
 INSERT IGNORE INTO evaluaciones (id,fecha_evaluacion, periodo, observaciones, fortalezas, debilidades, por_mejorar)
 VALUES (2,'2024-01-11', 'Primer Semestre 2025', 'buen desempeño', 'personalidad', 'ninguna', 'Liderazgo');
 INSERT IGNORE INTO evaluaciones (id,fecha_evaluacion, periodo, observaciones, fortalezas, debilidades, por_mejorar)
