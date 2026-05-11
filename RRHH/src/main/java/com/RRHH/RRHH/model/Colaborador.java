@@ -14,6 +14,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.Email;
@@ -86,6 +87,14 @@ public class Colaborador {
         private Cargos cargos;
 
         @ManyToOne
-        @JoinColumn(name = "colaborador_id", nullable = false)
-        private Colaborador colaborador;
+        @JoinColumn(name = "evaluaciones", nullable = false)
+        private Evaluaciones evaluaciones;
+
+        @OneToMany(mappedBy = "curriculum")
+        private List<Curriculum> curriculum;
+
+        @ManyToMany
+        @JoinTable(name = "colaborador_titulo", joinColumns = @JoinColumn(name = "colaborador_id"), inverseJoinColumns = @JoinColumn(name = "titulo_id"), uniqueConstraints = @UniqueConstraint(columnNames = {
+                        "colaborador_id", "titulo_id" }))
+        private List<Titulo> titulos;
 }
