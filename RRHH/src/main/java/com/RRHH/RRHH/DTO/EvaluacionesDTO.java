@@ -1,6 +1,6 @@
 package com.RRHH.RRHH.DTO;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -11,7 +11,7 @@ import lombok.Data;
 public class EvaluacionesDTO {
 
     private Long id;
-    private Date fechaEvaluacion;
+    private LocalDate fechaEvaluacion;
     private String periodo;
     private String observaciones;
     private String fortalezas;

@@ -1,6 +1,6 @@
 package com.RRHH.RRHH.model;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -39,7 +39,7 @@ public class Evaluaciones {
 */
     @Column(nullable= false)
     @JsonFormat(pattern = "dd.MM.yyyy")
-    private Date fechaEvaluacion;
+    private LocalDate fechaEvaluacion;
 
     @Column(nullable= false, length = 50)
     private String periodo; //Ej: Semestre 1 2026

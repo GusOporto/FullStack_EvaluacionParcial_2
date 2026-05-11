@@ -1,6 +1,6 @@
 package com.RRHH.RRHH.DTO;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -13,7 +13,7 @@ public class TituloDTO {
     private Long id;
     private String nombre;
     private String institucion;
-    private Date fechaObtencion;
+    private LocalDate fechaObtencion;
 
 
 }
