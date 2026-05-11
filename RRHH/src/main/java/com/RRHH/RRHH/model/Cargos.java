@@ -42,9 +42,9 @@ public class Cargos {
     @Column(nullable = false)
     private Integer sueldo;
 
-    //Relaciones
+    // Relaciones
 
-    @OneToMany(mappedBy = "colaboradores") 
+    @OneToMany(mappedBy = "cargos")
     private List<Colaborador> colaboradores;
 
 }

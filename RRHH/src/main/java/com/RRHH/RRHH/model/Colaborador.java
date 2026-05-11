@@ -86,11 +86,10 @@ public class Colaborador {
         @JoinColumn(name = "cargos_id", nullable = false)
         private Cargos cargos;
 
-        @ManyToOne
-        @JoinColumn(name = "evaluaciones", nullable = false)
-        private Evaluaciones evaluaciones;
+        @OneToMany(mappedBy = "colaborador")
+        private List<Evaluaciones> evaluaciones;
 
-        @OneToMany(mappedBy = "curriculum")
+        @OneToMany(mappedBy = "colaborador")
         private List<Curriculum> curriculum;
 
         @ManyToMany
