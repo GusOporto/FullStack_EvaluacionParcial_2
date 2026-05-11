@@ -92,4 +92,9 @@ public class Colaborador {
 
         @OneToMany(mappedBy = "curriculum")
         private List<Curriculum> curriculum;
+
+        @ManyToMany
+        @JoinTable(name = "colaborador_titulo", joinColumns = @JoinColumn(name = "colaborador_id"), inverseJoinColumns = @JoinColumn(name = "titulo_id"), uniqueConstraints = @UniqueConstraint(columnNames = {
+                        "colaborador_id", "titulo_id" }))
+        private List<Titulo> titulos;
 }
