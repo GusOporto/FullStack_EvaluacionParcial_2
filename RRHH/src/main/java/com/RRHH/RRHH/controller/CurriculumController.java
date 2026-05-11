@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.RRHH.RRHH.DTO.CurriculumDTO;
 import com.RRHH.RRHH.model.Curriculum;
 import com.RRHH.RRHH.service.CurriculumService;
+
+import jakarta.validation.Valid;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -37,7 +40,7 @@ public class CurriculumController {
     }
 
     @PostMapping
-    public ResponseEntity <Curriculum> guardar(@RequestBody Curriculum curriculum){
+    public ResponseEntity <Curriculum> guardar(@Valid @RequestBody Curriculum curriculum){
         try{
             Curriculum curriculumNuevo = curriculumService.save(curriculum);
             return new ResponseEntity<>(curriculumNuevo, HttpStatus.CREATED);
@@ -58,7 +61,7 @@ public class CurriculumController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Curriculum> actualizar (@PathVariable Long id, @RequestBody Curriculum curriculum){
+    public ResponseEntity<Curriculum> actualizar (@Valid @PathVariable Long id, @RequestBody Curriculum curriculum){
         try{
             Curriculum  edicionCurriculum = curriculumService.updateCurriculum(id, curriculum);
             return new ResponseEntity<>(edicionCurriculum, HttpStatus.OK);
@@ -79,7 +82,7 @@ public class CurriculumController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Curriculum> editarCurriculum(@PathVariable Long id,@RequestBody Curriculum curriculum){
+    public ResponseEntity<Curriculum> editarCurriculum(@Valid @PathVariable Long id,@RequestBody Curriculum curriculum){
         try{
             Curriculum editado = curriculumService.updateCurriculum(id, curriculum);
             return new ResponseEntity<>(editado, HttpStatus.OK);

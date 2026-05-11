@@ -19,6 +19,8 @@ import com.RRHH.RRHH.DTO.CargosDTO;
 import com.RRHH.RRHH.model.Cargos;
 import com.RRHH.RRHH.service.CargosService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("api/v1/cargos")// http://localhost:8080/api/v1/cargos
 public class CargosController {
@@ -37,7 +39,7 @@ public class CargosController {
     }
 
     @PostMapping
-    public ResponseEntity <Cargos> guardar(@RequestBody Cargos cargos){
+    public ResponseEntity <Cargos> guardar(@Valid @RequestBody Cargos cargos){
         try{
             Cargos cargoNuevo = cargosService.save(cargos);
             return new ResponseEntity<>(cargoNuevo, HttpStatus.CREATED);
@@ -57,7 +59,7 @@ public class CargosController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Cargos> actualizar (@PathVariable Long id, @RequestBody Cargos cargo){
+    public ResponseEntity<Cargos> actualizar (@Valid @PathVariable Long id, @RequestBody Cargos cargo){
         try{
             Cargos edicionCargo = cargosService.updateCargos(id, cargo);
             return new ResponseEntity<>(edicionCargo, HttpStatus.OK);
@@ -78,7 +80,7 @@ public class CargosController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Cargos> editarCargo(@PathVariable Long id,@RequestBody Cargos cargo){
+    public ResponseEntity<Cargos> editarCargo(@Valid @PathVariable Long id,@RequestBody Cargos cargo){
         try{
             Cargos editado = cargosService.updateCargos(id,cargo);
             return new ResponseEntity<>(editado, HttpStatus.OK);

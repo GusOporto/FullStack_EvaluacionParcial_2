@@ -84,4 +84,8 @@ public class Colaborador {
         @ManyToOne
         @JoinColumn(name = "cargos_id", nullable = false)
         private Cargos cargos;
+
+        @ManyToOne
+        @JoinColumn(name = "colaborador_id", nullable = false)
+        private Colaborador colaborador;
 }

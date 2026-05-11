@@ -1,6 +1,7 @@
 package com.RRHH.RRHH.model;
 
 import java.sql.Date;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -16,7 +17,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 @Entity
-@Table(name= "evlauaciones")
+@Table(name= "evaluaciones")
 //CLASE DE EVALUACION DESEMPEÑO EN RRHH
 public class Evaluaciones {
 
@@ -56,5 +57,10 @@ public class Evaluaciones {
     @Size(min = 2, max = 250, message = "Las mejoras deben tener al menos 2 caracteres")
     @Column(nullable = false, length = 250)
     private String porMejorar;
+
+    //Relaciones
+
+    @OneToMany(mappedBy = "evaluaciones")
+    private List<Evaluaciones> Evaluaciones;
 
 }

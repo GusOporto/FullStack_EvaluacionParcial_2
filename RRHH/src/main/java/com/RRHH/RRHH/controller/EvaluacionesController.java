@@ -19,6 +19,8 @@ import com.RRHH.RRHH.DTO.EvaluacionesDTO;
 import com.RRHH.RRHH.model.Evaluaciones;
 import com.RRHH.RRHH.service.EvaluacionesService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("api/v1/evaluaciones")// http://localhost:8080/api/v1/evaluaciones
 public class EvaluacionesController {
@@ -37,7 +39,7 @@ public class EvaluacionesController {
     }
 
     @PostMapping
-    public ResponseEntity <Evaluaciones> guardar(@RequestBody Evaluaciones evaluaciones){
+    public ResponseEntity <Evaluaciones> guardar(@Valid @RequestBody Evaluaciones evaluaciones){
         try{
             Evaluaciones evaluacionNueva = evaluacionesService.save(evaluaciones);
             return new ResponseEntity<>(evaluacionNueva, HttpStatus.CREATED);
@@ -57,7 +59,7 @@ public class EvaluacionesController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Evaluaciones> actualizar (@PathVariable Long id, @RequestBody Evaluaciones evaluaciones){
+    public ResponseEntity<Evaluaciones> actualizar (@Valid @PathVariable Long id, @RequestBody Evaluaciones evaluaciones){
         try{
             Evaluaciones  edicionEvaluaciones = evaluacionesService.updateEvaluaciones(id, evaluaciones);
             return new ResponseEntity<>(edicionEvaluaciones, HttpStatus.OK);
@@ -78,7 +80,7 @@ public class EvaluacionesController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Evaluaciones> editarEvaluaciones(@PathVariable Long id,@RequestBody Evaluaciones evaluaciones){
+    public ResponseEntity<Evaluaciones> editarEvaluaciones(@Valid @PathVariable Long id,@RequestBody Evaluaciones evaluaciones){
         try{
             Evaluaciones editado = evaluacionesService.updateEvaluaciones(id, evaluaciones);
             return new ResponseEntity<>(editado, HttpStatus.OK);

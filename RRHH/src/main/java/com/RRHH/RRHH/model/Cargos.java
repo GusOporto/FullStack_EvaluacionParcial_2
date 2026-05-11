@@ -36,7 +36,9 @@ public class Cargos {
     @Column(nullable = false)
     private Integer sueldo;
 
-    @OneToMany(mappedBy = "colaboradores")
-    private List<Colaborador> colabodaror;
+    //Relaciones
+
+    @OneToMany(mappedBy = "colaboradores") 
+    private List<Colaborador> colaboradores;
 
 }

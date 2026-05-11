@@ -19,6 +19,8 @@ import com.RRHH.RRHH.DTO.TituloDTO;
 import com.RRHH.RRHH.model.Titulo;
 import com.RRHH.RRHH.service.TituloService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("api/v1/titulo")// http://localhost:8080/api/v1/titulo
 public class TituloController {
@@ -37,7 +39,7 @@ public class TituloController {
     }
 
     @PostMapping
-    public ResponseEntity <Titulo> guardar(@RequestBody Titulo titulo){
+    public ResponseEntity <Titulo> guardar(@Valid @RequestBody Titulo titulo){
         try{
             Titulo TituloNuevo = tituloService.save(titulo);
             return new ResponseEntity<>(TituloNuevo, HttpStatus.CREATED);
@@ -57,7 +59,7 @@ public class TituloController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Titulo> actualiazr (@PathVariable Long id, @RequestBody Titulo titulo){
+    public ResponseEntity<Titulo> actualiazr (@Valid @PathVariable Long id, @RequestBody Titulo titulo){
         try{
             Titulo  edicionTitulo = tituloService.updateTitulo(id, titulo);
             return new ResponseEntity<>(edicionTitulo, HttpStatus.OK);
@@ -78,7 +80,7 @@ public class TituloController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Titulo> editarEvaluaciones(@PathVariable Long id,@RequestBody Titulo titulo){
+    public ResponseEntity<Titulo> editarEvaluaciones(@Valid @PathVariable Long id,@RequestBody Titulo titulo){
         try{
             Titulo editado = tituloService.updateTitulo(id, titulo);
             return new ResponseEntity<>(editado, HttpStatus.OK);

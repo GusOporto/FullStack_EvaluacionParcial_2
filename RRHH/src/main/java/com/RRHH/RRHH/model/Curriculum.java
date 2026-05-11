@@ -1,5 +1,7 @@
 package com.RRHH.RRHH.model;
 
+import java.util.List;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -60,4 +62,9 @@ public class Curriculum {
 
     @Column(nullable= false, length =  100)
     private String idiomas;
+
+    //Relaciones
+    @ManyToOne
+    @JoinColumn(name = "colaborador_id", nullable = false)
+    private Colaborador colaborador;
 }
