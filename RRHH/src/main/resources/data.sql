@@ -34,12 +34,12 @@ INSERT IGNORE INTO cargos (id,nombre, descripcion, sueldo)
 VALUES (1,'Administrador de Tienda', 'Se encarga de administrar la tienda', 725000);
 
 -- Insertar Curriculum
-INSERT IGNORE INTO curriculum (id,nombre, edad, experiencia_laboral, certificaciones, habilidades, fortalezas, idiomas)
-VALUES (1,'Benjamin Saavedra', 27, '1 años con Java', 'Certificado Java', 'Java, Git', 'Responsabilidad', 'Español, Ingles');
-INSERT IGNORE INTO curriculum (id,nombre, edad, experiencia_laboral, certificaciones, habilidades, fortalezas, idiomas)
-VALUES (2,'Gustavo Oporto', 22, '3 años con Java y Sql', 'Certificado Java y sql', 'Java, SQL, Git', 'Responsabilidad y aprendizaje', 'Español, Ingles y italiano');
-INSERT IGNORE INTO curriculum (id,nombre, edad, experiencia_laboral, certificaciones, habilidades, fortalezas, idiomas)
-VALUES (1,'Krishna ', 22, '2 años con Java ', 'Certificado Java', 'Java, SQL, Git ', 'Responsabilidad', 'Español, Ingles y frances');
+INSERT IGNORE INTO curriculum (id,nombre, edad, experiencia_laboral, certificaciones, habilidades, fortalezas, idiomas,colaborador_id)
+VALUES (1,'Benjamin Saavedra', 27, '1 años con Java', 'Certificado Java', 'Java, Git', 'Responsabilidad', 'Español, Ingles',1);
+INSERT IGNORE INTO curriculum (id,nombre, edad, experiencia_laboral, certificaciones, habilidades, fortalezas, idiomas,colaborador_id)
+VALUES (2,'Gustavo Oporto', 22, '3 años con Java y Sql', 'Certificado Java y sql', 'Java, SQL, Git', 'Responsabilidad y aprendizaje', 'Español, Ingles y italiano',2);
+INSERT IGNORE INTO curriculum (id,nombre, edad, experiencia_laboral, certificaciones, habilidades, fortalezas, idiomas,colaborador_id)
+VALUES (3,'Krishna ', 22, '2 años con Java ', 'Certificado Java', 'Java, SQL, Git ', 'Responsabilidad', 'Español, Ingles y frances',3);
 
 -- Insertar Títulos
 INSERT IGNORE INTO titulo (id,nombre, institucion, fecha_obtencion)
@@ -50,9 +50,9 @@ INSERT IGNORE INTO titulo (id,nombre, institucion, fecha_obtencion)
 VALUES (1,'Ingeniero en Informatica', 'Duoc UC sede Inglaterra', '2024-11-15');
 
 -- Insertar Evaluaciones
-INSERT IGNORE INTO evaluaciones (id,fecha_evaluacion, periodo, observaciones, fortalezas, debilidades, por_mejorar)
-VALUES (1,'2022-08-12', 'Primer Semestre 2026', 'increible desempeño', 'Puntualidad', 'Comunicacion', 'Liderazgo');
-INSERT IGNORE INTO evaluaciones (id,fecha_evaluacion, periodo, observaciones, fortalezas, debilidades, por_mejorar)
-VALUES (2,'2024-01-11', 'Primer Semestre 2025', 'buen desempeño', 'personalidad', 'ninguna', 'Liderazgo');
-INSERT IGNORE INTO evaluaciones (id,fecha_evaluacion, periodo, observaciones, fortalezas, debilidades, por_mejorar)
-VALUES (3,'2026-05-10', 'Primer Semestre 2023', 'Excelente desempeño', 'Puntualidad', 'Comunicacion', 'Liderazgo');
+INSERT IGNORE INTO evaluaciones (id,fecha_evaluacion, periodo, observaciones, fortalezas, debilidades, por_mejorar,colaborador_id)
+VALUES (1,'2022-08-12', 'Primer Semestre 2026', 'increible desempeño', 'Puntualidad', 'Comunicacion', 'Liderazgo',1);
+INSERT IGNORE INTO evaluaciones (id,fecha_evaluacion, periodo, observaciones, fortalezas, debilidades, por_mejorar,colaborador_id)
+VALUES (2,'2024-01-11', 'Primer Semestre 2025', 'buen desempeño', 'personalidad', 'ninguna', 'Liderazgo',2);
+INSERT IGNORE INTO evaluaciones (id,fecha_evaluacion, periodo, observaciones, fortalezas, debilidades, por_mejorar,colaborador_id)
+VALUES (3,'2026-05-10', 'Primer Semestre 2023', 'Excelente desempeño', 'Puntualidad', 'Comunicacion', 'Liderazgo',3);
